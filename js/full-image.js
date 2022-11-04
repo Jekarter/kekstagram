@@ -19,14 +19,6 @@ window.addEventListener('keydown', (evt) => {
   }
 })
 
-/* if (bigPicture.classList.contains('hidden')) {
-  bigPictureClose.addEventListener('click', () => {
-    bigPicture.classList.add('hidden')
-    body.classList.remove('modal-open')
-  })
-*/
-
-
 
 const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
 const commentList = document.querySelector('.social__comments')

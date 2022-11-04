@@ -1,7 +1,8 @@
 import { imageUploadPreview } from './reditor-image.js';
+import { controlLoad } from './load-image.js';
 
 let buttonSubmitPhoto = document.querySelector('.img-upload__submit')
-let effects = document.querySelectorAll('input[name="effect"]')
+let effects = document.querySelector('.img-upload__effect-level')
 let effectNone = document.querySelector('#effect-none');
 let effectChrome = document.querySelector('#effect-chrome');
 let effectSepia = document.querySelector('#effect-sepia');
@@ -16,38 +17,101 @@ noUiSlider.create(sliderElement, {
     min: 0,
     max: 1,
   },
-  start: 0.8,
+  start: 1,
   step: 0.1,
   connect: 'lower',
 })
 
-sliderElement.noUiSlider.on('update', (_, handle, unencoded) => {
-  valueElement.value = unencoded[handle]
-  console.log(valueElement.value)
+let getUpdateOptions = (min, max, step, start) => {
+  sliderElement.noUiSlider.updateOptions({
+    range: {
+      min: min,
+      max: max,
+    },
+    step: step,
+    start: start,
+  });
+}
 
-  if (effectChrome.checked) {
-    imageUploadPreview.style.filter = 'grayscale('+ valueElement.value + ')';
+
+effectNone.addEventListener('change', (evt) => {
+  if (evt.target.checked) {
+    imageUploadPreview.style.filter = 'none';
+    effects.classList.add('hidden')
   }
-  if (effectHeat.checked) {
-    imageUploadPreview.style.filter = 'brightness('+ valueElement.value + ')';
+})
+
+controlLoad.addEventListener('change', () => {
+  imageUploadPreview.style.filter = 'none';
+  effects.classList.add('hidden')
+});
+
+effectChrome.addEventListener('change', (evt) => {
+  if (evt.target.checked) {
+    if (effects.classList.contains('hidden')) {
+      effects.classList.remove('hidden')
+    }
+    getUpdateOptions(0, 1, 0.1, 1)
+  }
+})
+
+effectSepia.addEventListener('change', (evt) => {
+  if (evt.target.checked) {
+    if (effects.classList.contains('hidden')) {
+      effects.classList.remove('hidden')
+    }
+    getUpdateOptions(0, 1, 0.1, 1)
+  }
+})
+
+effectMarvin.addEventListener('change', (evt) => {
+  if (evt.target.checked) {
+    if (effects.classList.contains('hidden')) {
+      effects.classList.remove('hidden')
+    }
+    getUpdateOptions(1, 100, 1, 100)
+  }
+})
+
+effectPhobos.addEventListener('change', (evt) => {
+  if (evt.target.checked) {
+    if (effects.classList.contains('hidden')) {
+      effects.classList.remove('hidden')
+    }
+    getUpdateOptions(0, 3, 0.1, 3)
   }
 })
 
 effectHeat.addEventListener('change', (evt) => {
   if (evt.target.checked) {
-    sliderElement.noUiSlider.updateOptions({
-      range: {
-        min: 1,
-        max: 3,
-      },
-      step: 0.1,
-    });
+    if (effects.classList.contains('hidden')) {
+      effects.classList.remove('hidden')
+    }
+    getUpdateOptions(1, 3, 0.1, 3)
   }
 })
 
-/* sliderElement.addEventListener('update', (evt) => {
+sliderElement.noUiSlider.on('update', (_, handle, unencoded) => {
+  if (effectChrome.checked) {
+    imageUploadPreview.style.filter = 'grayscale('+ valueElement.value + ')';
+  }
 
+  if (effectSepia.checked) {
+    imageUploadPreview.style.filter = 'sepia('+ valueElement.value + ')';
+  }
+
+  if (effectMarvin.checked) {
+    imageUploadPreview.style.filter = 'invert('+ valueElement.value + ')';
+  }
+
+  if (effectPhobos.checked) {
+    imageUploadPreview.style.filter = 'blur('+ valueElement.value + 'px' + ')';
+  }
+
+  if (effectHeat.checked) {
+    imageUploadPreview.style.filter = 'brightness('+ valueElement.value + ')';
+  }
+  return valueElement.value = unencoded[handle]
 })
- */
 
 export { buttonSubmitPhoto };

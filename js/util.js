@@ -1,12 +1,16 @@
-// Измеряем длинну строки
-
-let strokeLength = 'Измеряем длинну строки';
-
-let checkLength = function (strokeText, maxLength) {
-  return strokeText.length <= maxLength;
+const onEscapeDown = (evt) => {
+  if (evt.key === 'Escape' || evt.key === 'Esc') {
+    evt.preventDefault();
+    evt.stopPropagation();
+  }
 }
 
-checkLength(strokeLength, 10)
+// Измеряем длинну строки
+
+let checkLength = function (strokeText, maxLength) {
+  console.log(strokeText.length <= maxLength)
+  return strokeText.length <= maxLength;
+}
 
 // Получаем случайное целое число
 
@@ -42,4 +46,4 @@ const makeUniqueRandomIntegerGenerator = (min, max) => {
 
 }
 
-export {previousValues, makeUniqueRandomIntegerGenerator, getRandom, checkLength};
+export {previousValues, makeUniqueRandomIntegerGenerator, getRandom, checkLength, onEscapeDown};

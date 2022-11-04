@@ -1,14 +1,17 @@
 import { body } from './full-image.js';
+import { imageUploadPreview, scaleValue } from './reditor-image.js';
 
 let controlLoad = document.querySelector('#upload-file');
 let redactorFormImage = document.querySelector('.img-upload__overlay');
 let controlLoadCancel = document.querySelector('#upload-cancel');
 
 // Временный клик место change
-controlLoad.addEventListener('click', (evt) => {
+controlLoad.addEventListener('change', (evt) => {
   evt.preventDefault();
   redactorFormImage.classList.remove('hidden')
   body.classList.add('modal-open');
+  scaleValue.value = '100%';
+  imageUploadPreview.style.transform = 'scale(' + 1 + ')';
 });
 
 let closeModal = () => {
@@ -26,5 +29,7 @@ window.addEventListener('keydown', (evt) => {
     controlLoad.value = '';
   }
 })
+
+
 
 export { controlLoad }

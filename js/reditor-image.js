@@ -33,4 +33,4 @@ scaleUp.addEventListener('click', () => {
 })
 
 
-export { imageUploadPreview };
+export { imageUploadPreview, scaleValue };
