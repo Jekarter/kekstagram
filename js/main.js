@@ -1,5 +1,3 @@
-/* global _:readonly */
-
 import './data.js';
 import { useDataInfo } from './pictures.js';
 import './full-image.js';
