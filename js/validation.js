@@ -1,4 +1,4 @@
-import { checkLength, onEscapeDown } from './util.js';
+import { onEscapeDown } from './util.js';
 
 const hashtagsInput = document.querySelector('.text__hashtags');
 const photoTextDescription = document.querySelector('.text__description');

@@ -1,6 +1,6 @@
 import { body } from './full-image.js';
 import { imageUploadPreview, scaleValue } from './reditor-image.js';
-import { showAlert } from './util.js';
+import './util.js';
 import { sendData } from './api.js';
 import { hashtagsInput, photoTextDescription } from './validation.js';
 import { messageSuccessLoadPhoto, messageTemplateError } from './message-load.js';

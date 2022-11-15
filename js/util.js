@@ -10,7 +10,7 @@ const onEscapeDown = (evt) => {
 // Измеряем длинну строки
 
 let checkLength = function (strokeText, maxLength) {
-  console.log(strokeText.length <= maxLength)
+  alert(strokeText.length <= maxLength)
   return strokeText.length <= maxLength;
 }
 
