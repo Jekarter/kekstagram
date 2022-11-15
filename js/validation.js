@@ -40,6 +40,6 @@ hashtagsInput.addEventListener('keydown', onEscapeDown)
 photoTextDescription.addEventListener('keydown', onEscapeDown);
 commentInput.addEventListener('keydown', onEscapeDown);
 
-export { hashtagsInput }
+export { hashtagsInput, photoTextDescription }
 
 //(#(?<tag>[A-Za-zА-Яа-я]{1,19})\s*)+

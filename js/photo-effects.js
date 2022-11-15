@@ -1,3 +1,4 @@
+/* global noUiSlider:readonly */
 import { imageUploadPreview } from './reditor-image.js';
 import { controlLoad } from './load-image.js';
 
@@ -10,7 +11,7 @@ let effectMarvin = document.querySelector('#effect-marvin');
 let effectPhobos = document.querySelector('#effect-phobos');
 let effectHeat = document.querySelector('#effect-heat');
 let sliderElement = document.querySelector('.effect-level__slider');
-let valueElement = document.querySelector('.effect-level__value');
+let valueElement = document.querySelector('[name="effect-level"]');
 
 noUiSlider.create(sliderElement, {
   range: {

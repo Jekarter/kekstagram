@@ -1,6 +1,6 @@
 import { getRandom } from './util.js';
 
-const NAMES = [
+/* const NAMES = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -41,12 +41,12 @@ const commentsRange = {
 let photos = [];
 
 const similarPhotosCount = 25;
-
+ */
 const getRandomArrayElement = (elements) => {
   return elements[getRandom(0, elements.length - 1)];
 };
 
-const addComments = () => {
+/* const addComments = () => {
   const comments = [];
 
   for (let i = 0; i < getRandom(commentsRange.MIN, commentsRange.MAX); i++) {
@@ -73,6 +73,6 @@ const addPhotos = () => {
   }
 };
 
-addPhotos();
+addPhotos(); */
 
-export { photos };
+export { getRandomArrayElement };
