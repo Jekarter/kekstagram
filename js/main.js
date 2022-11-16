@@ -10,7 +10,9 @@ import './message-load.js';
 import './filters.js';
 
 
-getData((photos) => useDataInfo(photos))
+getData((photos) => {
+  useDataInfo(photos)
+})
 
 setUserFormSubmit(closeModal)
 

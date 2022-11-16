@@ -1,3 +1,4 @@
+/* global _:readonly */
 const ALERT_SHOW_TIME = 5000;
 
 const onEscapeDown = (evt) => {
@@ -13,6 +14,13 @@ let checkLength = function (strokeText, maxLength) {
   alert(strokeText.length <= maxLength)
   return strokeText.length <= maxLength;
 }
+
+// Получаем случайное число при помощи Loodash
+
+let getRandomArrayElement = (elements) => {
+  return elements[_.random(0, elements.length - 1)];
+};
+
 
 // Получаем случайное целое число
 
@@ -69,4 +77,4 @@ const showAlert = (message) => {
 }
 
 
-export { previousValues, makeUniqueRandomIntegerGenerator, getRandom, checkLength, onEscapeDown, showAlert };
+export { previousValues, getRandomArrayElement, makeUniqueRandomIntegerGenerator, getRandom, checkLength, onEscapeDown, showAlert };
