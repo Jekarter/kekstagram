@@ -18,8 +18,7 @@ function shuffle(array) {
 
 
 let useDataInfo = (photos) => {
-  photos
-    .slice();
+  photos.slice();
   for (let i = 0; i < photos.length; i++) {
 
     let randomUser = pictureTemplate.cloneNode(true);

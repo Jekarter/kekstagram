@@ -1,8 +1,9 @@
 import { getData } from './api.js';
 import { useDataInfo, shuffle } from './pictures.js';
 
-const RANDOM_PREVIEW_LOAD = 25;
-
+/* const RANDOM_PREVIEW_LOAD = 25;
+const RERENDER_DELAY = 500;
+ */
 const filterBlock = document.querySelector('.img-filters');
 const filterRandom = document.querySelector('#filter-random');
 const filterDefault = document.querySelector('#filter-default');
@@ -36,16 +37,30 @@ filterDefault.addEventListener('click', () => {
 });
 
 
+/* const debounce = (cb, timeout) => {
+  let delay;
+  return () => {
+    clearTimeout(delay)
+
+    delay = setTimeout(cb, timeout)
+
+    // Задержка реализуется с помощью setTimeout
+    // Если вызов произошёл до окончания задержки, таймер начинает отсчёт заново
+  };
+}; */
+
+
 filterRandom.addEventListener('click', () => {
   if (filterDefault.classList.contains('img-filters__button--active') || filterDiscussed.classList.contains('img-filters__button--active')) {
     filterDefault.classList.remove('img-filters__button--active');
     filterDiscussed.classList.remove('img-filters__button--active');
   }
   filterRandom.classList.add('img-filters__button--active');
+
   removePhotos();
   getData((photos) => {
     shuffle(photos)
-    useDataInfo(photos.slice(0, RANDOM_PREVIEW_LOAD))
+    useDataInfo(photos)
   });
 });
 
