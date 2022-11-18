@@ -5,10 +5,19 @@ import { sendData } from './api.js';
 import { hashtagsInput, photoTextDescription } from './validation.js';
 import { messageSuccessLoadPhoto, messageTemplateError } from './message-load.js';
 
+const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+const Picture = {
+  WIDTH: 600,
+  HEIGHT: 600,
+};
+
 let controlLoad = document.querySelector('#upload-file');
 let redactorFormImage = document.querySelector('.img-upload__overlay');
 let controlLoadCancel = document.querySelector('#upload-cancel');
 let imageUploadForm = document.querySelector('.img-upload__form');
+let previews = document.querySelectorAll('.effects__preview')
+
+
 
 const clearImageLoadInfo = () => {
   hashtagsInput.value = '';
@@ -18,6 +27,29 @@ const clearImageLoadInfo = () => {
 
 controlLoad.addEventListener('change', (evt) => {
   evt.preventDefault();
+  const file = controlLoad.files[0];
+  const fileName = file.name.toLowerCase();
+
+  const matches = FILE_TYPES.some((it) => {
+    return fileName.endsWith(it);
+  });
+
+  if (matches) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+      imageUploadPreview.src = reader.result;
+      imageUploadPreview.width = Picture.WIDTH;
+      imageUploadPreview.height = Picture.HEIGHT;
+      previews.forEach((filters) => {
+        filters.style.backgroundImage = `url(${reader.result})`
+      })
+    })
+
+    reader.readAsDataURL(file);
+  }
+
+
   redactorFormImage.classList.remove('hidden')
   body.classList.add('modal-open');
   scaleValue.value = '100%';

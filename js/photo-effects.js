@@ -102,7 +102,7 @@ sliderElement.noUiSlider.on('update', (_, handle, unencoded) => {
   }
 
   if (effectMarvin.checked) {
-    imageUploadPreview.style.filter = 'invert('+ valueElement.value + ')';
+    imageUploadPreview.style.filter = 'invert('+ valueElement.value + '%' + ')';
   }
 
   if (effectPhobos.checked) {
