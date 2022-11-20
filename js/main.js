@@ -8,7 +8,6 @@ import './validation.js';
 import { getData } from './api.js';
 import './message-load.js';
 import './filters.js';
-import './comments-load.js';
 
 
 getData((photos) => {

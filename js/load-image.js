@@ -4,6 +4,7 @@ import './util.js';
 import { sendData } from './api.js';
 import { hashtagsInput, photoTextDescription } from './validation.js';
 import { messageSuccessLoadPhoto, messageTemplateError } from './message-load.js';
+import { setDefaultLevel, effectLevel } from './photo-effects.js';
 
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 const Picture = {
@@ -18,11 +19,11 @@ let imageUploadForm = document.querySelector('.img-upload__form');
 let previews = document.querySelectorAll('.effects__preview')
 
 
-
 const clearImageLoadInfo = () => {
   hashtagsInput.value = '';
   controlLoad.value = '';
   photoTextDescription.value = '';
+  setDefaultLevel();
 }
 
 controlLoad.addEventListener('change', (evt) => {
@@ -59,6 +60,10 @@ controlLoad.addEventListener('change', (evt) => {
 let closeModal = () => {
   redactorFormImage.classList.add('hidden');
   body.classList.remove('modal-open');
+  effectLevel.classList.add('visually-hidden');
+  controlLoad.value = '';
+  imageUploadForm.reset();
+  setDefaultLevel();
 }
 
 controlLoadCancel.addEventListener('click', () => {
@@ -69,7 +74,7 @@ controlLoadCancel.addEventListener('click', () => {
 window.addEventListener('keydown', (evt) => {
   if (evt.keyCode === 27) {
     closeModal();
-    clearImageLoadInfo()
+    clearImageLoadInfo();
   }
 })
 
