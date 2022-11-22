@@ -1,4 +1,4 @@
-/* global noUiSlider:readonly */
+import noUiSlider from 'nouislider';
 import { imageUploadPreview } from './reditor-image.js';
 
 const DEFAULT_EFFECT_LEVEL = 100;

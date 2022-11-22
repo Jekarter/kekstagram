@@ -1,4 +1,5 @@
 /* global _:readonly */
+
 const ALERT_SHOW_TIME = 5000;
 
 const onEscapeDown = (evt) => {
